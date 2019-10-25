@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load my_filter %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="/catalog">Каталог</a></h1>
+        </div>
+        <div class="sort-block">
+            {# Здесь должен быть раздел с сортировкой #}
+            <br>
+            <br>
+            Сортировать по:  <a href={{ href_name }} style="margin-left: 40px">    названию   </a>
+            <a href={{ href_min_price }} style="margin-left: 40px"> начиная с дешевых   </a>
+            <a href={{ href_max_price }} style="margin-left: 40px"> начиная с дорогих   </a>
+        </div>
+
+        <div class="content">
+            {# Здесь должен отображаться каталог с телефонами #}
+            {% for i in ides %}
+                <br>
+                <a href = {{ slug|arind:i }} style="font-size : 32px"> {{ name|arind:i }}</a>
+                <br>
+                <b>стоимость: {{ price|arind:i }}</b>
+                <br>
+                <img src = {{ image|arind:i }}>
+                {% for i in 6|times %}
+                    <br>
+                {%endfor%}
+            {%endfor%}
+        </div>
+    </div>
+{% endblock %}
