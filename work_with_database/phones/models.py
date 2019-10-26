@@ -11,7 +11,7 @@ class Phone(models.Model):
     )
     release_date = models.DateField()
     lte_exists = models.BooleanField()
-    slug = models.TextField()
+    slug = models.SlugField()
 
 class PhoneAdmin(admin.ModelAdmin):
 	pass

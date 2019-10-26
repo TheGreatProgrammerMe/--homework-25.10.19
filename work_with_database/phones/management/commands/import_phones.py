@@ -1,5 +1,5 @@
 import csv
-
+from django.utils.text import slugify
 from django.core.management.base import BaseCommand
 from phones.models import Phone
 
@@ -22,7 +22,7 @@ class Command(BaseCommand):
                     price = line[3],
                     release_date = line[4],
                     lte_exists = line[5],
-                    slug = '/catalog/'+str(line[1]).replace(' ', '')
+                    slug = slugify(str(line[1]), allow_unicode=True)
                     )
                 
                 phone.save()
